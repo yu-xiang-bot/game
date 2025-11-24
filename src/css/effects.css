@@ -1,0 +1,514 @@
+/* 星云守护 - 特殊视觉效果 */
+
+/* ================================
+   粒子效果和动画
+   ================================ */
+
+/* 粒子背景效果 */
+.particle-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatParticle 10s linear infinite;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* 流星效果 */
+.meteor {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+    animation: meteorFall 3s linear infinite;
+}
+
+.meteor::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, transparent 100%);
+    transform: translateX(-100px);
+}
+
+@keyframes meteorFall {
+    0% {
+        transform: translate(-100px, -100px) rotate(-45deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(100vw + 100px), calc(100vh + 100px)) rotate(-45deg);
+        opacity: 0;
+    }
+}
+
+/* 脉冲光环效果 */
+.pulse-ring {
+    position: absolute;
+    border: 2px solid rgba(102, 126, 234, 0.8);
+    border-radius: 50%;
+    animation: pulseRing 2s ease-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* 能量波纹效果 */
+.energy-wave {
+    position: absolute;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.6) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: energyWave 1.5s ease-out;
+    pointer-events: none;
+}
+
+@keyframes energyWave {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* 爆炸效果 */
+.explosion {
+    position: absolute;
+    pointer-events: none;
+}
+
+.explosion-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ffa500;
+    border-radius: 50%;
+    animation: explodeParticle 0.8s ease-out forwards;
+}
+
+@keyframes explodeParticle {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* 闪烁效果 */
+.glow-effect {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: brightness(1) drop-shadow(0 0 10px currentColor);
+    }
+    to {
+        filter: brightness(1.5) drop-shadow(0 0 20px currentColor);
+    }
+}
+
+/* 震动效果 */
+.shake-effect {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+/* 旋转光环 */
+.rotating-ring {
+    position: absolute;
+    border: 2px solid transparent;
+    border-top: 2px solid #667eea;
+    border-radius: 50%;
+    animation: rotateRing 2s linear infinite;
+}
+
+@keyframes rotateRing {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 护盾效果 */
+.shield-effect {
+    position: absolute;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.4) 50%, transparent 70%);
+    border: 1px solid rgba(0, 212, 255, 0.6);
+    border-radius: 50%;
+    animation: shieldPulse 2s ease-in-out infinite;
+}
+
+@keyframes shieldPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* 升级光柱效果 */
+.upgrade-beam {
+    position: absolute;
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 215, 0, 0.6) 50%, transparent 100%);
+    animation: beamFlash 1s ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes beamFlash {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* 收集物品效果 */
+.collect-effect {
+    position: absolute;
+    color: #00ff88;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+    animation: collectFloat 1.5s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes collectFloat {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px) scale(1);
+        opacity: 0;
+    }
+}
+
+/* 伤害数字效果 */
+.damage-number {
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: damageFloat 1s ease-out forwards;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.damage-number.critical {
+    color: #ff4757;
+    font-size: 28px;
+    animation: criticalDamageFloat 1s ease-out forwards;
+}
+
+.damage-number.normal {
+    color: #ffa500;
+}
+
+.damage-number.heal {
+    color: #00ff88;
+}
+
+@keyframes damageFloat {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(-10px) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-40px) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes criticalDamageFloat {
+    0% {
+        transform: translateY(0) scale(0.3) rotate(-10deg);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(-15px) scale(1.5) rotate(5deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-60px) scale(1) rotate(0deg);
+        opacity: 0;
+    }
+}
+
+/* 技能冷却效果 */
+.cooldown-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.cooldown-timer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* 瞄准线效果 */
+.aim-line {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #ff4757 20%, #ff4757 80%, transparent 100%);
+    transform-origin: left center;
+    animation: aimPulse 1s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes aimPulse {
+    0%, 100% {
+        opacity: 0.5;
+        height: 2px;
+    }
+    50% {
+        opacity: 1;
+        height: 4px;
+    }
+}
+
+/* 警告标记 */
+.warning-marker {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    animation: warningBlink 1s ease-in-out infinite;
+}
+
+.warning-marker::before {
+    content: '⚠';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: #ffa500;
+    text-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
+}
+
+@keyframes warningBlink {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* 胜利庆祝效果 */
+.victory-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: victoryFall 3s linear infinite;
+}
+
+.victory-particle:nth-child(odd) {
+    background: #ffd700;
+    animation-delay: 0.5s;
+}
+
+.victory-particle:nth-child(even) {
+    background: #ff69b4;
+    animation-delay: 1s;
+}
+
+@keyframes victoryFall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(calc(100vh + 100px)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 雷电效果 */
+.lightning-effect {
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(180deg, #fff 0%, #667eea 50%, transparent 100%);
+    transform-origin: top center;
+    animation: lightningFlash 0.3s ease-out forwards;
+    filter: blur(1px);
+    box-shadow: 0 0 10px #667eea;
+}
+
+@keyframes lightningFlash {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scaleY(1);
+        opacity: 0;
+    }
+}
+
+/* 魔法阵效果 */
+.magic-circle {
+    position: absolute;
+    border: 2px solid rgba(102, 126, 234, 0.8);
+    border-radius: 50%;
+    animation: magicRotate 4s linear infinite;
+}
+
+.magic-circle::before,
+.magic-circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(118, 75, 162, 0.6);
+    border-radius: 50%;
+}
+
+.magic-circle::before {
+    width: 80%;
+    height: 80%;
+    animation: magicRotate 3s linear infinite reverse;
+}
+
+.magic-circle::after {
+    width: 60%;
+    height: 60%;
+    animation: magicRotate 2s linear infinite;
+}
+
+@keyframes magicRotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 响应式粒子效果 */
+@media (max-width: 768px) {
+    .particle {
+        width: 2px;
+        height: 2px;
+    }
+    
+    .damage-number {
+        font-size: 16px;
+    }
+    
+    .damage-number.critical {
+        font-size: 20px;
+    }
+    
+    .collect-effect {
+        font-size: 14px;
+    }
+}
+
+/* 性能优化：减少动画复杂度 */
+@media (prefers-reduced-motion: reduce) {
+    .particle,
+    .meteor,
+    .pulse-ring,
+    .energy-wave,
+    .rotating-ring,
+    .shield-effect,
+    .magic-circle {
+        animation: none;
+    }
+    
+    .glow-effect,
+    .shake-effect {
+        animation: none;
+    }
+}
