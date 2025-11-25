@@ -53,7 +53,7 @@ export class GameText extends SportBase {
     if (this.iconSprite) {
       const view = this.view as any
       this.iconSprite.x = v
-      this.view.x = v + this.iconSprite.width * (1 - this.iconSprite.anchor.x) + this.txtOffsetX + this.view.width * (1 - view.anchor.x)
+      (this.view as any).x = v + this.iconSprite.width * (1 - this.iconSprite.anchor.x) + this.txtOffsetX + (this.view as any).width * (1 - view.anchor.x)
     } else {
       super.x = v
     }

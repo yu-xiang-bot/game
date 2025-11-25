@@ -9,7 +9,7 @@ import { TILEDMAP_IMG_DATA_TYPE, SOURCE_TYPE, GAMEOBJECT_VIEW_TYPE, EFFECT_TYPE,
 import { ICreateBtnOption, IMAGE_BTN_GENOBJ, IMAGE_BTN_OPTION, POINT, RECT, ROLE_CREATE_OPTION } from "./types"
 import { BlobWriter, BlobReader, ZipReader, ZipWriter } from "@zip.js/zip.js"
 import Main from "../core/main"
-import { ISkeletonParser, SkeletonJson, TextureAtlas, AtlasAttachmentLoader, SPINE_VERSION, spine38, spine40, detectSpineVersion, Spine, SpineBase, ISlot, IRegionAttachment } from "./spine"
+import { ISkeletonParser, SkeletonJson, TextureAtlas, AtlasAttachmentLoader, SPINE_VERSION, detectSpineVersion, Spine, SpineBase, ISlot, IRegionAttachment } from "./spine"
 import Scene from "../ui/scene"
 import { ScrollBox } from "../ui/scrollbox"
 import { CanvasSprite } from "../class/gameObject/base"

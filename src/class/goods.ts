@@ -177,7 +177,7 @@ export class Goods extends SportBase {
     const psp = view as Sprite
     psp.anchor.x = 0.5
     psp.anchor.y = 0.5
-    psp.filters = this.view.filters
+    psp.filters = (this.view as any).filters
     this._updateZindex()
     return view
   }
@@ -283,7 +283,7 @@ export class Goods extends SportBase {
    */
   setGlow(color = 0xffffff, dis = 10) {
     const o = Color.setColor(color)
-    this.view.filters = [new GlowFilter({
+    (this.view as any).filters = [new GlowFilter({
       color: new Color(o.r, o.g, o.b, o.a).toHexAlpha().hex,
       distance: dis,
       quality: 0.5

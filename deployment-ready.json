@@ -1,0 +1,20 @@
+{
+  "timestamp": "2025-11-25T07:12:06.272Z",
+  "status": "READY_TO_DEPLOY",
+  "game_url": "https://vcmrpbysnxzhqxfjvshf.functions.supabase.co/nebula-guardian",
+  "project_ref": "vcmrpbysnxzhqxfjvshf",
+  "function_name": "nebula-guardian",
+  "build_files": 187,
+  "build_size": "13.66 MB",
+  "deployment_methods": [
+    "dashboard",
+    "cli",
+    "api"
+  ],
+  "next_actions": [
+    "访问 Supabase Dashboard",
+    "创建 Edge Function",
+    "粘贴函数代码",
+    "部署并验证"
+  ]
+}

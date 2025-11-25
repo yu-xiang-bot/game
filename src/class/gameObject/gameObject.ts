@@ -1,4 +1,4 @@
-import { Sprite, Container, Rectangle, Graphics } from "pixi.js"
+import { Sprite, Container, Rectangle, Graphics, DisplayObject } from "pixi.js"
 import { Spine, TrackEntry } from "./../../utils/spine"
 import userUtilsPro from "../../utils/utilsPro"
 import Main from "../../core/main"
@@ -12,13 +12,13 @@ import Scene from "../../ui/scene"
 
 export class GameObject extends Base {
   get x() {
-    return this.view.x
+    return (this.view as any).x
   }
   set x(v) {
     if (this.view) {
-      const b = this.collsionTest(this.view.x, v, "x")
+      const b = this.collsionTest((this.view as any).x, v, "x")
       if (b) {
-        this.view.x = v
+        (this.view as any).x = v
       }
     } else {
       this.bufX = v
@@ -26,14 +26,14 @@ export class GameObject extends Base {
   }
 
   get y() {
-    return this.view.y
+    return (this.view as any).y
   }
 
   set y(v) {
     if (this.view) {
-      const b = this.collsionTest(this.view.y, v, "y")
+      const b = this.collsionTest((this.view as any).y, v, "y")
       if (b) {
-        this.view.y = v
+        (this.view as any).y = v
 
         if (this.useBindZindex) {
           this.zIndex = v
@@ -193,7 +193,7 @@ export class GameObject extends Base {
   /**
    * 储存的视图
    */
-  view:Sprite|Spine|Container
+  view:Sprite|Spine|Container<any>|DisplayObject
   /**
    * 纹理名称
    */

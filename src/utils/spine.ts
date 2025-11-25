@@ -1,11 +1,7 @@
 
-import { SpineParser, Spine } from "@pixi-spine/loader-uni"
-// import * as spine38 from '@pixi-spine/runtime-3.8'
+import { SpineParser, Spine } from "pixi-spine"
 import { SPINE_VERSION } from "./enum"
-// import * as spine40 from '@pixi-spine/runtime-4.0'
-// export { SkeletonBounds }
 export { SpineParser, Spine }
-export * from "@pixi-spine/base"
 /**
  * @public
  */
@@ -34,12 +30,5 @@ export function detectSpineVersion(version: string): SPINE_VERSION {
 }
 
 import * as spine38 from "@pixi-spine/runtime-3.8"
-
 import * as spine40 from "@pixi-spine/runtime-4.0"
-export {
-  spine38,
-  spine40,
-  SPINE_VERSION
-}
-export * from "@pixi-spine/runtime-3.7"
-// SpineParser.registerLoaderPlugin()
+export { SPINE_VERSION, spine38, spine40 }

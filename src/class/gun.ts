@@ -168,7 +168,7 @@ export class Gun extends Goods {
   }
   resetPassive() {
     super.resetPassive()
-    this.view.filters = []
+    (this.view as any).filters = []
   }
 
   /**

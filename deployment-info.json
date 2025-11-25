@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-11-25T06:58:22.112Z",
+  "projectRef": "vcmrpbysnxzhqxfjvshf",
+  "files": 187,
+  "buildInfo": {
+    "version": 1764053898450,
+    "assets": {
+      "audio": 1,
+      "img": 5,
+      "scene": 4,
+      "gameData": 6
+    }
+  },
+  "gameUrl": "https://vcmrpbysnxzhqxfjvshf.functions.supabase.co/nebula-guardian"
+}

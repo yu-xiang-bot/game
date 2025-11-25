@@ -127,16 +127,16 @@ export default class DumpObject extends GameObject {
 
   get x() {
     if (this.view) {
-      return this.view.x
+      return (this.view as any).x
     } else {
       return this.bufX
     }
   }
   set x(v: number) {
     if (this.view) {
-      const b = this.collsionTest(this.view.x, v, "x")
+      const b = this.collsionTest((this.view as any).x, v, "x")
       if (b) {
-        this.view.x = v
+        (this.view as any).x = v
       }
     } else {
       this.bufX = v
@@ -145,7 +145,7 @@ export default class DumpObject extends GameObject {
 
   get y() {
     if (this.view) {
-      return this.view.y
+      return (this.view as any).y
     } else {
       return this.bufY
     }
@@ -153,9 +153,9 @@ export default class DumpObject extends GameObject {
 
   set y(v) {
     if (this.view) {
-      const b = this.collsionTest(this.view.y, v, "y")
+      const b = this.collsionTest((this.view as any).y, v, "y")
       if (b) {
-        this.view.y = v
+        (this.view as any).y = v
         if (this.useBindZindex) {
           this.zIndex = v
         }
@@ -165,7 +165,7 @@ export default class DumpObject extends GameObject {
     }
   }
   get isFaceLeft() {
-    return !(this.view.scale.x > 0)
+    return !((this.view as any).scale.x > 0)
   }
   /**
    * x方向移动速度
@@ -451,8 +451,8 @@ export default class DumpObject extends GameObject {
   createSpineView(name?: string): void {
     super.createSpineView(name)
 
-    this.view.x = this.bufX
-    this.view.y = this.bufY
+    (this.view as any).x = this.bufX
+    (this.view as any).y = this.bufY
     if (this.useBindZindex) {
       this.zIndex = this.bufY
     }

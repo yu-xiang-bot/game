@@ -62,22 +62,28 @@ function verAdd(v) {
 // //fs.copySync(resolve("./../package.json"),resolve("./../release/package.json"));
 // fs.copySync(resolve("./../README.md"),resolve("./../release/README.md"));
 
-function copyDirSync(path,tg){
-	var pa = fs.readdirSync(path);
+function copyDirSync(srcPath,dstPath){
+	var pa = fs.readdirSync(srcPath);
 	pa.forEach(function(ele,index){
-		var info = fs.statSync(path+"/"+ele)	
-    fs.copySync(resolve(path+"/"+ele),resolve(tg+"/"+ele))
+		var info = fs.statSync(path.join(srcPath, ele))	
+    fs.copySync(resolve(path.join(srcPath, ele)),resolve(path.join(dstPath, ele)))
 	
 	})
 }
 
 
+// 确保目标目录存在
+const distDir = resolve('./../dist')
+if (!fs.existsSync(distDir)) {
+  fs.mkdirSync(distDir, { recursive: true })
+}
+
 copyDirSync(resolve('./../public'),resolve('./../dist'))
 
-function loopDir(path,call){
-  var items = fs.readdirSync(path)
+function loopDir(dirPath,call){
+  var items = fs.readdirSync(dirPath)
   for(var i = 0;i<items.length;i++){
-    var itemPath = path+"\\"+items[i]
+    var itemPath = path.join(dirPath, items[i])
     var stat = fs.statSync(itemPath);
     if(stat.isFile()){
       call&&call(itemPath)

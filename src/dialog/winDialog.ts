@@ -51,7 +51,7 @@ export default {
     graphics.drawRoundedRect(0, 0, con.width, con.height, 10)
     graphics.endFill()
     con.addChild(graphics)
-    con.filters = [new OutlineFilter(2, 0xd4a55d)]
+    con.filters = [new OutlineFilter(2, 0xd4a55d) as any]
 
     const btn1 = userUtilsPro.createImageBtn("plist_comm_none2_btn.png",
       "plist_comm_none2_btn.png", "再玩一次", 120, 35, {

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import * as PIXI from "pixi.js"
-import { Sprite } from "pixi.js"
+import { Sprite, DisplayObject } from "pixi.js"
 import { allBehavior, BehaviorManager } from "../../class/behaviorTree"
 import { Role } from "../../class/role"
 import { Tower } from "../../gameClass/tower"
@@ -334,7 +334,7 @@ export class TowerSelect extends PIXI.Container {
       const txt = GameText.create(this.getTowerLevelGold(data.role, 0) + "", 0, 0, 0xFFD700, 12, "plist_comm_gold.png") as GameText
       txt.txtOffsetX = 0
       txt.setIconSize(14, 14)
-      item.addChild(txt.view)
+      item.addChild(txt.view as DisplayObject)
       item.addChild(txt.iconSprite)
       txt.y = 10
       txt.x = (50 - txt.width) / 2 + 7

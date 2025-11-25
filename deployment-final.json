@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-11-25T07:11:03.590Z",
+  "project": {
+    "ref": "vcmrpbysnxzhqxfjvshf",
+    "url": "https://vcmrpbysnxzhqxfjvshf.supabase.co",
+    "game_url": "https://vcmrpbysnxzhqxfjvshf.functions.supabase.co/nebula-guardian"
+  },
+  "credentials": {
+    "access_token": "FOhF8W2g7HkifBg7",
+    "service_role_key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZjbXJwYnlzbnh6cWh4amZ2c2hmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2Mzk2NzcwNiwiZXhwIjoyMDc5NTQzNzA2fQ.xguaCBWLUtpu0Fd2dyftnAC6sV0TGehBkUKwBhBKgrQ"
+  },
+  "function": {
+    "name": "nebula-guardian",
+    "runtime": "deno",
+    "verify_jwt": false,
+    "entrypoint_path": "index.ts"
+  }
+}
