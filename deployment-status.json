@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-11-25T00:34:36.887Z",
-  "status": "fixed",
+  "timestamp": "2025-11-25T00:59:36.887Z",
+  "status": "deployed",
   "summary": {
-    "passed": 23,
-    "warnings": 3,
+    "passed": 25,
+    "warnings": 1,
     "failed": 0
   },
   "details": {
@@ -34,9 +34,7 @@
     ],
     "failed": [],
     "warnings": [
-      "⚠️ public/spine 目录不存在",
-      "⚠️ 构建可能有问题，请检查TypeScript错误",
-      "⚠️ 建议先提交所有更改再部署"
+      "⚠️ public/spine 目录不存在"
     ]
   }
 }
