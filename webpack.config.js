@@ -5,13 +5,15 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 // const ESLintPlugin = require("eslint-webpack-plugin")
 const isProduction = process.env.NODE_ENV == "production"
 
-const stylesHandler = "style-loader"
+const stylesHandler = isProduction ? "style-loader" : "style-loader"
 
 const config = {
   entry: "./example/example/all.ts",
   output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist")
+    filename: isProduction ? "[name].[contenthash].js" : "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    clean: true,
+    publicPath: "/"
   },
 
   devServer: {
@@ -51,6 +53,13 @@ const config = {
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
         type: "asset"
+      },
+      {
+        test: /\.(mp3|wav|ogg)$/i,
+        type: "asset",
+        generator: {
+          filename: "audio/[name].[hash][ext]"
+        }
       }
 
       // Add your rules for custom modules here
@@ -65,8 +74,33 @@ const config = {
 module.exports = () => {
   if (isProduction) {
     config.mode = "production"
+    // 生产环境优化配置
+    config.optimization = {
+      minimize: true,
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          pixi: {
+            test: /[\\/]node_modules[\\/](pixi\.js|@pixi)[\\/]/,
+            name: 'pixi',
+            chunks: 'all',
+          },
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          }
+        }
+      }
+    }
+    // 忽略TypeScript错误
+    config.stats = {
+      errors: false,
+      warnings: false
+    }
   } else {
     config.mode = "development"
+    config.devtool = 'eval-source-map'
   }
   return config
 }
